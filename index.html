@@ -1,60 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Display Widget</title>
+    <title>Custom Widget Control Panel</title>
     <style>
-        #widget-container {
-            padding: 20px;
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            max-width: 400px;
-            margin: auto;
-            text-align: center;
-        }
-        input[type="text"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #display-text {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+        body { font-family: Arial, sans-serif; }
+        .container { padding: 20px; }
     </style>
 </head>
 <body>
-    <div id="widget-container">
-        <h3>Text Display Widget</h3>
-        <input type="text" id="text-input" placeholder="Type something here...">
-        <button onclick="displayText()">Display Text</button>
-        <div id="display-text"></div>
+    <div class="container">
+        <h1>Widget Control Panel</h1>
+        <label for="inputField">Enter Value:</label>
+        <input type="text" id="inputField" />
+        <button onclick="saveValue()">Save</button>
     </div>
-
     <script>
-        function displayText() {
-            var textInput = document.getElementById('text-input').value;
-            var displayText = document.getElementById('display-text');
-            
-            if (textInput) {
-                displayText.textContent = textInput;
-            } else {
-                displayText.textContent = 'Please enter some text.';
-            }
+        function saveValue() {
+            var inputValue = document.getElementById('inputField').value;
+            window.parent.postMessage({ type: 'SAVE_VALUE', value: inputValue }, '*');
         }
     </script>
 </body>
