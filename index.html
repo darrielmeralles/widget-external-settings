@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Display Widget</title>
+    <style>
+        #widget-container {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #display-text {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="widget-container">
+        <h3>Text Display Widget</h3>
+        <input type="text" id="text-input" placeholder="Type something here...">
+        <button onclick="displayText()">Display Text</button>
+        <div id="display-text"></div>
+    </div>
+
+    <script>
+        function displayText() {
+            var textInput = document.getElementById('text-input').value;
+            var displayText = document.getElementById('display-text');
+            
+            if (textInput) {
+                displayText.textContent = textInput;
+            } else {
+                displayText.textContent = 'Please enter some text.';
+            }
+        }
+    </script>
+</body>
+</html>
